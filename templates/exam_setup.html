@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="setup-container" style="max-width: 600px; margin: 0 auto;">
+    <div class="glass-card">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Configure Exam</h2>
+            <p style="color: var(--text-muted);">Customize your assessment parameters.</p>
+        </div>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <select name="subject" id="subject" class="form-control" required>
+                    <option value="" disabled selected>Select a topic...</option>
+                    <option value="Python Programming">Python Programming</option>
+                    <option value="Django Framework">Django Framework</option>
+                    <option value="Data Structures">Data Structures</option>
+                    <option value="Machine Learning">Machine Learning</option>
+                    <option value="General Knowledge">General Knowledge</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Exam Mode</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="mode" value="normal" checked>
+                        <span class="radio-label">
+                            <span style="display: block; font-size: 1.25rem; margin-bottom: 0.25rem;">📝</span>
+                            Standard
+                        </span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="mode" value="endless">
+                        <span class="radio-label">
+                            <span style="display: block; font-size: 1.25rem; margin-bottom: 0.25rem;">♾️</span>
+                            Endless
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Difficulty Level</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="difficulty" value="Easy" required>
+                        <span class="radio-label">Easy</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="difficulty" value="Medium">
+                        <span class="radio-label">Medium</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="difficulty" value="Hard">
+                        <span class="radio-label">Hard</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="alert-info"
+                style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 0.5rem; padding: 1rem; margin: 2rem 0; display: flex; gap: 1rem;">
+                <span style="font-size: 1.5rem;">📷</span>
+                <div>
+                    <strong style="color: #1e40af; display: block; margin-bottom: 0.25rem;">Webcam Required</strong>
+                    <span style="font-size: 0.875rem; color: #1e3a8a;">Your camera will be active during the session for
+                        proctoring.</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="width: 100%; padding: 1rem;">Start
+                Assessment</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
